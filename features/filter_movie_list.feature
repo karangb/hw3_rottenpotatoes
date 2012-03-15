@@ -22,11 +22,8 @@ Background: movies have been added to database
   And  I am on the RottenPotatoes home page
   
 Scenario: restrict to movies with 'PG' or 'R' ratings
-  When I check "ratings[PG]"
-  And I check "ratings[R]"
-  
-  And I uncheck "ratings[G]"
-  And I uncheck "ratings[PG-13]"
+  When I check the following ratings: PG, R
+  And I uncheck the following ratings: G, PG-13
   
   When I press "Refresh"
 
