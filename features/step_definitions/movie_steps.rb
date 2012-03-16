@@ -31,7 +31,10 @@ When /I (un)?check the following ratings: (.*)/ do |uncheck, rating_list|
       steps (%Q(When I check "ratings[#{rating}]"))
     end
   end
-  # HINT: use String#split to split up the rating_list, then
-  #   iterate over the ratings and reuse the "When I check..." or
-  #   "When I uncheck..." steps in lines 89-95 of web_steps.rb
+end
+
+Then /I should see all of the movies/ do
+  numberOfRows = page.all('table tbody tr').size
+  numberOfMovies = Movie.find(:all).count
+  assert_equal numberOfMovies, numberOfRows
 end
