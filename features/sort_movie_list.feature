@@ -23,8 +23,7 @@ Background: movies have been added to database
 
 Scenario: sort movies alphabetically
   # your steps here
-  When I check the following ratings: PG, R, G, PG-13
-  And I press "Refresh"
+  When all the movies are displayed
   And I follow "title_header"
   Then the movies should be sorted alphabetically
 

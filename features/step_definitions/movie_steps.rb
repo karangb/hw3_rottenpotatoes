@@ -45,3 +45,9 @@ Then /the movies should be sorted alphabetically/ do
     steps %Q(Then I should see "#{x.title}" before "#{y.title}")
   end
 end
+
+When /all the movies are displayed/ do
+  steps "When I check the following ratings: PG, R, G, PG-13"
+  steps "And I press \"Refresh\""
+end
+
