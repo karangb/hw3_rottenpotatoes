@@ -39,6 +39,10 @@ Then /I should see all of the movies/ do
   assert_equal numberOfMovies, numberOfRows
 end
 
+Then /I should see no movies/ do
+  numberOfRows = page.all('table tbody tr').size
+  assert_equal 0, numberOfRows
+end
 Then /the movies should be sorted alphabetically/ do
   check_order Movie.all(:order => :title)
 end
