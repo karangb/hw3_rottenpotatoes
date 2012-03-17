@@ -40,14 +40,21 @@ Then /I should see all of the movies/ do
 end
 
 Then /the movies should be sorted alphabetically/ do
-  movies = Movie.all(:order => :title)
-  movies.each_cons(2) do |x,y|
+  check_order Movie.all(:order => :title)
+end
+
+def check_order(sortedList)
+  sortedList.each_cons(2) do |x,y|
     steps %Q(Then I should see "#{x.title}" before "#{y.title}")
   end
 end
+
 
 When /all the movies are displayed/ do
   steps "When I check the following ratings: PG, R, G, PG-13"
   steps "And I press \"Refresh\""
 end
 
+When /the movies should be sorted in increasing order of release date/ do
+  check_order Movie.all(:order => :release_date) 
+end

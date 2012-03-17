@@ -29,4 +29,6 @@ Scenario: sort movies alphabetically
 
 Scenario: sort movies in increasing order of release date
   # your steps here
-
+  When all the movies are displayed
+  And I follow "release_date_header"
+  Then the movies should be sorted in increasing order of release date
