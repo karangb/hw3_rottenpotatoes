@@ -39,3 +39,9 @@ Then /I should see all of the movies/ do
   assert_equal numberOfMovies, numberOfRows
 end
 
+Then /the movies should be sorted alphabetically/ do
+  movies = Movie.all(:order => :title)
+  movies.each_cons(2) do |x,y|
+    steps %Q(Then I should see "#{x.title}" before "#{y.title}")
+  end
+end

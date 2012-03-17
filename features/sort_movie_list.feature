@@ -25,7 +25,8 @@ Scenario: sort movies alphabetically
   # your steps here
   When I check the following ratings: PG, R, G, PG-13
   And I press "Refresh"
-  Then I should see "Aladdin" before "Chocolat"
+  And I follow "title_header"
+  Then the movies should be sorted alphabetically
 
 Scenario: sort movies in increasing order of release date
   # your steps here
